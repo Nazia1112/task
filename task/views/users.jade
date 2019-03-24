@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col
+                form(method='post')
+                    .form-row
+                        .form-group.col-md-6
+                            label(for='firstName') First Name
+                            input#firstname.form-control(type='text', placeholder='Enter your first name', name="firstName")
+                        .form-group.col-md-6
+                            label(for='lastName') Last Name
+                            input#lastname.form-control(type='text', placeholder='Enter your last name', name="lastName")
+                    .form-row
+                        .form-group.col-md-3
+                            label(for='age') Age
+                            input#age.form-control(type='number', name='age', placeholder='Enter age')
+                        .form-group.col-md-7
+                            label(for='email') Email address
+                            input#email.form-control(type='email', name="email", aria-describedby='emailHelp', placeholder='Enter email')
+                    | Gender:
+                    .form-check
+                        input#male.form-check-input(type='radio', name='gender', value='Male', checked='')
+                        label.form-check-label(for='male') Male
+                        .form-check
+                        input#female.form-check-input(type='radio', name='gender', value='Female')
+                        label.form-check-label(for='female') Female
+                    br
+                    | Agree to our terms and conditions:
+                    .form-check
+                        input#yes.form-check-input(type='radio', name='agree', value='true', checked='')
+                        label.form-check-label(for='yes') Yes
+                    .form-check
+                        input#no.form-check-input(type='radio', name='agree', value='false')
+                        label.form-check-label(for='no') No
+                    button.btn.btn-primary(type='submit', href='/users') Submit
+            .col
+                ul
+                each val, index in users
+                    a(href= 'users/'+val._id)
+                        li= val.firstName + ' ' + val.lastName + ' (' + val.email + ')'

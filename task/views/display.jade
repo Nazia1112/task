@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    form(method='post')
+        .form-row
+            .form-group.col-md-6
+                label(for='firstName') First Name
+                input#firstname.form-control(type='text', placeholder='Enter your first name', name="firstName", value=user.firstName)
+            .form-group.col-md-6
+                label(for='lastName') Last Name
+                input#lastname.form-control(type='text', placeholder='Enter your last name', name="lastName", value=user.lastName)
+        .form-row
+            .form-group.col-md-3
+                label(for='age') Age
+                input#age.form-control(type='number', name='age', placeholder='Enter age', value=user.age)
+            .form-group.col-md-7
+                label(for='email') Email address
+                input#email.form-control(type='email', name="email", aria-describedby='emailHelp', placeholder='Enter email', value=user.email)
+        | Gender:
+        .form-check
+            input#male.form-check-input(type='radio', name='gender', value='Male', checked='')
+            label.form-check-label(for='male') Male
+            .form-check
+            input#female.form-check-input(type='radio', name='gender', value='Female')
+            label.form-check-label(for='female') Female
+        br
+        
+        button.btn.btn-primary(type='submit') Update
